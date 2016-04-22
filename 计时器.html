@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>计时器</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<style type="text/css">
+	#box{
+		width: 100px;
+		height: 100px;
+		background: green;
+		color: red;
+		font-size: 20px;
+		position: absolute;
+		left: 0px;
+		top: 90px;
+	}
+	button{
+		font-size: 26px;
+		padding: 10px;
+	}
+</style>
+</head>
+<body>
+	<button>走走</button>
+	<button>婷婷</button>
+	<div id="box">嗨起来～</div>
+</body>
+<script type="text/javascript">
+	var x=0;
+	// setInterval(function () {//重复执行
+	// 	x++;
+	// 	console.log(x);
+	// },1000);
+	
+	// setTimeout(function (){
+	// 	x+=10;
+	// 	console.log(x);
+	// 	alert('你好啊');
+	// },5000);
+	
+	var l=0;
+	var time=null;
+	var box=document.getElementById('box');
+	var btn=document.getElementsByTagName('button');
+	btn[0].onclick=function (){
+		// clearInterval(time);
+		time=setInterval(function () {//重复执行
+			l++;
+			box.style.left=l+'px';
+		},10);
+	}
+	btn[1].onclick=function (){
+		clearInterval(time);
+	}
+	
+	
+</script>
+</html>

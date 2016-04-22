@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>测试</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="stylesheet" type="text/css" href="reset.css">
+<style type="text/css">
+	#outer{
+		width: 772px;
+		height: 136px;
+		margin: 50px auto;
+		border: 1px solid red;
+		overflow: hidden;
+		/*overflow: auto;*/
+		/*position: relative;*/
+	}
+	#inner,#inner2{
+		float: left;
+		height: 136px;
+		overflow: hidden;
+	}
+	#inner img,#inner2 img{
+		float: left;
+		width: 193px;
+		height: 136px;
+		cursor: pointer;
+	}
+	#con{
+		width: 3000px;
+		height: 136px;
+		overflow: hidden;
+	}
+	button{
+		font-size: 30px;
+		padding: 8px;
+	}
+</style>
+</head>
+<body>
+	<button>走走</button>
+	<button>停停</button>
+	<div id="outer">
+		<div id="con">
+			<div id="inner">
+				<img src="images/01.jpg">
+				<img src="images/02.jpg">
+				<img src="images/03.jpg">
+				<img src="images/04.jpg">
+				<img src="images/05.jpg">
+			</div>
+			<div id="inner2">
+				
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var btn=document.getElementsByTagName('button');
+	var outer=document.getElementById('outer');
+	var in1=document.getElementById('inner');
+	var in2=document.getElementById('inner2');
+	var imgs=outer.getElementsByTagName('img');
+	in2.innerHTML=in1.innerHTML;
+	var sl=0;
+	var maxw=in1.offsetWidth;
+	var time=null;
+	function run(){
+		clearInterval(time);
+		time=setInterval(function () {
+			sl++;
+			if (sl>=maxw) {
+				sl=0;
+			};
+			outer.scrollLeft=sl;
+		},10);
+	}
+	run();//进入页面自动执行
+
+	outer.onmouseover=function (){
+		clearInterval(time);
+	}
+	outer.onmouseout=function (){
+		run();
+	}
+	btn[0].onclick=function (){
+		run();
+	}
+	btn[1].onclick=function (){
+		clearInterval(time);
+	}
+</script>
+</html>
